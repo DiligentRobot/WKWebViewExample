@@ -11,15 +11,20 @@ import WebKit
 
 extension ViewController: WKScriptMessageHandler {
     
+    /// When JavaScript in the web page calls `webkit.messageHandlers.populationHasChanged.postMessage()`
+    /// It will arrive here.
     func userContentController(_ userContentController: WKUserContentController,
                                didReceive message: WKScriptMessage) {
         
+        // Check we are process the populationHasChanged message and
+        // that the message body is a JSON Dictionary and has the population key.
         guard message.name == "populationHasChanged",
             let body = message.body as? [String: Any],
             let population = body["population"] as? Int else {
             return
         }
     
+        // Make sure we update the UI on the main thread. 
         DispatchQueue.main.async {
             self.populationLabel.text = "Population: \(population)"
         }

@@ -12,6 +12,7 @@ import WebKit
 extension ViewController: WKNavigationDelegate {
     
     
+    /// When a navigation actions occurs for a link to wikipedia ensure it gets moved out to the default browser.
     func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         // If we are loading for any reason other than a link activated
@@ -34,6 +35,8 @@ extension ViewController: WKNavigationDelegate {
         decisionHandler(.allow)
     }
     
+    /// When the first load of the initial html page is finished
+    /// Call the filter JavaScript within the page.
     func webView(_: WKWebView, didFinish: WKNavigation!) {
         guard didFinish == initialLoadAction else { return }
         self.filterTowns(filter: searchField.text ?? "")

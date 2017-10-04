@@ -11,6 +11,7 @@ import WebKit
 
 extension ViewController: WKUIDelegate {
     
+    /// Intercept JavaScript alert calls and replace with a native UIAlert. 
     func webView(_ webView: WKWebView,
                  runJavaScriptAlertPanelWithMessage message: String,
                  initiatedByFrame frame: WKFrameInfo,

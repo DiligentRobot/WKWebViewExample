@@ -12,7 +12,8 @@ import WebKit
 extension ViewController: WKNavigationDelegate {
     
     
-    /// When a navigation actions occurs for a link to wikipedia ensure it gets moved out to the default browser.
+    /// When a navigation action occurs for a link to wikipedia, ensure it gets
+    /// Moved out to the default browser.
     func webView(_: WKWebView, decidePolicyFor: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         // If we are loading for any reason other than a link activated
@@ -31,7 +32,7 @@ extension ViewController: WKNavigationDelegate {
             return
         }
         
-        //By default allow the other requests to continue
+        // By default allow the other requests to continue
         decisionHandler(.allow)
     }
     

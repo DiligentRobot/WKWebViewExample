@@ -16,12 +16,12 @@ enum CustomSchemeHandlerError: Error {
 
 extension ViewController: WKURLSchemeHandler {
     
-    /// Any reqests for our custom `dr-bundle-file1 scheme if arrive here.
+    /// Any reqests for our custom `dr-bundle-file1 scheme will arrive here.
     func webView(_ webView: WKWebView,
                  start urlSchemeTask: WKURLSchemeTask) {
         
-        /// Make sure the task is for a dr-bundle-file
-        guard let url  = urlSchemeTask.request.url,
+        // Make sure the task is for a dr-bundle-file
+        guard let url = urlSchemeTask.request.url,
             let scheme = url.scheme,
             scheme == "dr-bundle-file" else {
                 urlSchemeTask.didFailWithError(CustomSchemeHandlerError.noIdeaWhatToDoWithThis)
@@ -42,7 +42,7 @@ extension ViewController: WKURLSchemeHandler {
             return
         }
         
-        // Load the data from the file and prepare a URLReponse.
+        // Load the data from the file and prepare a URLResponse.
         do {
             let data = try Data(contentsOf: fileBundleUrl)
             let response = URLResponse(url: url,
@@ -59,8 +59,9 @@ extension ViewController: WKURLSchemeHandler {
         }
     }
     
-    // Not needed here but should be implemented to stop loading in cases where the
-    // fulfilling of the request was a long running asynchonous operation that may not have finished.
+    /// Not needed here but should be implemented to stop loading in cases where
+    /// The fulfilling of the request was a long running asynchronous operation
+    /// That may not have finished.
     func webView(_ webView: WKWebView,
                  stop urlSchemeTask: WKURLSchemeTask) {
         

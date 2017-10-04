@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create a confuration, load any required scripts
+        // Create a configuration, load any required scripts
         // and register custom schemes.
         let config = WKWebViewConfiguration()
         loadScripts(config: config)
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
                                                    forMainFrameOnly: true)
             config.userContentController.addUserScript(filterTownsUserScript)
             
-            // Register to recieve populationHasChanged messages.
+            // Register to receive populationHasChanged messages.
             config.userContentController.add(self, name: "populationHasChanged")
         } catch {
             fatalError("Something went wrong: \(error)")

@@ -16,8 +16,8 @@ extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController,
                                didReceive message: WKScriptMessage) {
         
-        // Check we are process the populationHasChanged message and
-        // that the message body is a JSON Dictionary and has the population key.
+        // Check we are processing the populationHasChanged message,
+        // That the message body is a JSON Dictionary and has the population key.
         guard message.name == "populationHasChanged",
             let body = message.body as? [String: Any],
             let population = body["population"] as? Int else {

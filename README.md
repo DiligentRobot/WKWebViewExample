@@ -29,6 +29,6 @@ You can see this in `ViewController+UISearchBarDelegate.swift`.
 
 ## NOTE
 
-This sample is designed to show feature on WKWebView as should not be used as a model of good programming practice because it really isn't.
+This sample is designed to show the features of WKWebView as should not be used as a model of good programming practice because it really isn't.
 The entire program exists in the view controller for simple demonstration purposes. 
 Code is written in a way to allow each line to be spoken about not because it is the right way to layout code.  
